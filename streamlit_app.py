@@ -1,7 +1,7 @@
 import streamlit as st
 from hugchat import hugchat
 from hugchat.login import Login
-self.active_model = "tiiuae/falcon-40b-instruct"
+
 
 # App title
 st.set_page_config(page_title="🤗💬 HugChat")
