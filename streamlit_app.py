@@ -37,6 +37,23 @@ with st.sidebar:
     💡 Note: No API key required!
     ''')
     add_vertical_space(5)
+    
+    # Import the streamlit_auth module
+    from hugchat import streamlit_auth
+    
+    # Create a login button and get the cookie object
+    cookie = streamlit_auth.login_button(redirect_url="https://huggingface.co/")
+    
+    # Use the cookie object to create a ChatBot instance
+    chatbot = hugchat.ChatBot(cookies=cookie)
+    
+    # Display some information about the logged in user
+    user = streamlit_auth.user_info()
+    st.image(user["avatar"], width=100)
+    st.markdown(f"Welcome, **{user['username']}**!")
+    st.markdown(f"Email: {user['email']}")
+    st.markdown(f"Profile: [Link]({user['profile_url']})")
+    
     st.write('Made with ❤️ by Chz')
 
 if 'generated' not in st.session_state:
