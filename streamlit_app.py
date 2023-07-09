@@ -40,7 +40,7 @@ def generate_response(prompt_input, email, passwd):
     # Create ChatBot                        
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
     # Change the active model to tiiuae/falcon-40b-instruct
-    chatbot.active_model = "tiiuae/falcon-40b-instruct"
+    chatbot.active_model = "facebook/galactica-120b"
     return chatbot.chat(prompt_input)
 
 # User-provided prompt
