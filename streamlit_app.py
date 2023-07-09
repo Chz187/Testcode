@@ -39,6 +39,7 @@ def generate_response(prompt_input, email, passwd):
     #sign.saveCookies()
     # Create ChatBot                        
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+    chatbot.active_model = "tiiuae/falcon-40b-instruct"
     return chatbot.chat(prompt_input)
 
 # User-provided prompt
