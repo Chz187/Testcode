@@ -3,6 +3,25 @@ from streamlit_chat import message
 from streamlit_extras.colored_header import colored_header
 from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
+from hugchat.login import Login
+
+# Log in to huggingface and grant authorization to huggingchat
+sign = Login(email, passwd)
+cookies = sign.login()
+
+# Save cookies to usercookies/<email>.json
+sign.saveCookies()
+
+# Create a ChatBot
+chatbot = hugchat.ChatBot(cookies=cookies.get_dict())  # or cookie_path="usercookies/<email>.json"
+print(chatbot.chat("HI"))
+
+# Create a new conversation
+id = chatbot.new_conversation()
+chatbot.change_conversation(id)
+
+# Get conversation list
+conversation_list = chatbot.get_conversation_list()
 
 st.set_page_config(page_title="ChzChat - An LLM-powered AI assistant app")
 
